@@ -9,6 +9,7 @@ export default class LinkedIn extends React.Component {
 
   static propTypes = {
     clientId: React.PropTypes.string,
+    redirectUri: React.PropTypes.string,
     callback: React.PropTypes.func.isRequired,
     className: React.PropTypes.string,
     text: React.PropTypes.node,
@@ -25,8 +26,8 @@ export default class LinkedIn extends React.Component {
     const clientId = this.props.clientId
     const scope = this.props.scope
     localStorage.linkedInReactLogin = state
-    localStorage.linkedInReactLoginRedirectUri = window.location.href
-    window.location.href = getURL({ clientId, state, scope })
+    localStorage.linkedInReactLoginRedirectUri = redirectUri
+    window.location.href = getURL({ clientId, state, scope, redirectUri })
   }
 
   @autobind
