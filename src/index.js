@@ -25,6 +25,8 @@ export default class LinkedIn extends React.Component {
     const state = Math.random().toString(36).substring(7)
     const clientId = this.props.clientId
     const scope = this.props.scope
+    const redirectUri = (typeof this.props.redirectUri !== 'undefined') ? this.props.redirectUri : window.location.href
+
     localStorage.linkedInReactLogin = state
     localStorage.linkedInReactLoginRedirectUri = redirectUri
     window.location.href = getURL({ clientId, state, scope, redirectUri })
